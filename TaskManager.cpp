@@ -13,6 +13,15 @@ FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER 
  STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+/**
+    c++14
+    TaskManager.cpp
+    Purpose: Create a new thread to execute given function.
+
+    @author Bastian Karschat
+    @version 1.0 08/10/16
+*/
+
 #include "TaskManager.hpp"
 
 /*how to use!

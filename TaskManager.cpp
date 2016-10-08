@@ -36,7 +36,7 @@ template <typename F, typename ...Args>
 decltype(auto) TaskManager::getThread(F &func_ptr, Args &&... params)
 {
 std::lock_guard<std::shared_timed_mutex> lock(rwMux);
-if (iNumberOfThreads<5) {
+if (iNumberOfThreads<maxNumberOfThreads) {
   iNumberOfThreads ++;
   return reallyasync(func_ptr, params...);
 } else {
@@ -67,8 +67,9 @@ auto TaskManager::notreallyasync(F &&func_ptr, Args &&... args)
 }
 
 
-TaskManager::TaskManager()
+TaskManager::TaskManager(int maxThreads)
 {
+  maxNumberOfThreads = maxThreads;
   iNumberOfThreads = 0;
 }
 

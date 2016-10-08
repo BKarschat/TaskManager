@@ -37,7 +37,7 @@ using std::thread;
 
 class TaskManager{
 public:
-  TaskManager();
+  TaskManager(int maxThreads);
   ~TaskManager();
   int getNumberOfThreads();
   template <typename F, typename ...Args>
@@ -48,6 +48,7 @@ public:
 private:
   std::mutex mux;
   std::shared_timed_mutex rwMux;
+  int maxNumberOfThreads;
   template <typename F, typename ...Args>
   auto notreallyasync(F &&func_ptr, Args &&... args);
   template <typename F, typename ...Args>

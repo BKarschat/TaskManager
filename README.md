@@ -11,17 +11,26 @@ Compile it with -std=c++14!
 Example:
 TaskManager manager{2}; //taskmanager with max 2 threads
 
-typedef std::function<int(std::string) > Funcp;                            //typedef for function pointer
-Funcp foo = std::bind(&Class::MemberFunc, object, std::placeholders::_1);   //bind memberfunction
+//typedef for function pointer
+typedef std::function<int(std::string) > Funcp;                            
+
+//bind memberfunction
+Funcp foo = std::bind(&Class::MemberFunc, object, std::placeholders::_1);   
+
 //Or use lamdas!  
-auto funcptr = [](){return true;};                                          //lamdas are the best
+auto funcptr = [](){return true;};                        
 
-auto future = manager.getThread(*foo,"test");                               //you are able to use function from 0 to many                                                                                   //params
+//you are able to use function from 0 to many params
+auto future = manager.getThread(*foo,"test");
 
-future.wait();                                                              //wait for the thread
-auto bar = future.get();                                                    //get the return value
-manager.decreaseNumberOfThreads();                                          //Decrease number. Still working on that...
+//wait for the thread
+future.wait();                               
 
+//get the return value
+auto bar = future.get();                     
+
+//Decrease number. Still working on that...
+manager.decreaseNumberOfThreads();
 
 
 
